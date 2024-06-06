@@ -1,0 +1,102 @@
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions,
+  ChartData,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const achievedTargetData = [492, 395, 398, 490, 595, 0, 0, 0];
+const achievedSurplusData = [0, 0, 0, 0, 0, 620, 715, 490];
+const targetData = [350, 280, 205, 410, 385, 0, 0, 0];
+const surplusData = [0, 0, 0, 0, 0, 670, 450, 320];
+
+const achievedtargetOrSurplusData = achievedTargetData.map((value, index) =>
+  value !== 0 ? value : achievedSurplusData[index]
+);
+
+const achievedtargetOrSurplusColors = achievedTargetData.map((value, index) =>
+  value !== 0 ? "#388968" : "#8FB140"
+);
+
+const targetOrSurplusData = targetData.map((value, index) =>
+  value !== 0 ? value : surplusData[index]
+);
+
+const targetOrSurplusColors = targetData.map((value, index) =>
+  value !== 0 ? "#0A9396" : "#EE9B00"
+);
+
+const data: ChartData<"bar"> = {
+  labels: [
+    "Manish K",
+    "Vishal S",
+    "Sanjay P",
+    "Amol M",
+    "HP-CH-JNK",
+    "Mahesh G",
+    "Kamal S",
+    "Amit S",
+  ],
+  datasets: [
+    {
+      label: "Achieved",
+      data: achievedtargetOrSurplusData,
+      backgroundColor: achievedtargetOrSurplusColors,
+    },
+    {
+      label: "Target/Surplus",
+      data: targetOrSurplusData,
+      backgroundColor: targetOrSurplusColors,
+    },
+  ],
+};
+const options: ChartOptions<"bar"> = {
+  maintainAspectRatio: false,
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top" as const,
+    },
+    title: {
+      display: true,
+      text: "Sales Performance",
+    },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      //   max: 800,
+    },
+    x: {
+        grid: {
+          display: false,
+        },
+    }
+  }
+};
+
+const RSMSummaryBarGraph: React.FC = () => {
+  return (
+    <div style={{ margin: '0 auto', height: '65vh', marginBottom: '1%', padding: '1%' }}>
+      <Bar data={data} options={options} />
+    </div>
+  );
+};
+
+export default RSMSummaryBarGraph;
