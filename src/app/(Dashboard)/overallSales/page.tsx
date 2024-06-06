@@ -2,22 +2,6 @@ import { cookies } from "next/headers";
 import config from "../../../../config/config.json";
 import OverallSalesComponent from "@/pages/OverallSalesComponent";
 
-// async function KisnaPageDailRepo() {
-//   try {
-//     const response = await simpleAwaitFetch(
-//       "KSNOrderDailyReport",
-//       true,
-//       cookies().get("__app_token")?.value
-//     );
-//     // console.log("dekhle", response);
-//     const data = await response.json();
-//     // console.log("hellp", data.currentYearMonthlyOrder[0]?.date);
-//     return data;
-//   } catch (error) {
-//     console.log("KSNOrderDailyReport", error);
-//   }
-// }
-
 const overallSales = async () => {
   const KisnaPageVendorWise = async (
     valuetype: string,

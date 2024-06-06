@@ -116,7 +116,7 @@ export default function CurrentFinnYear({ VendorWiseData }: any) {
           {/* Top Vender Order Wise */}
         </div>
       </div>
-      <div className="bg-white items-center shadow-sm rounded my-4 border border-[#E0E0FF]">
+      {/* <div className="bg-white items-center shadow-sm rounded my-4 border border-[#E0E0FF]">
         <div className="border-b-2 border-[#CACAFA] flex justify-between items-center ">
           <h2 className="font-bold text-[24px] text-[#25215E] m-3 ">
             Net Sales Trend
@@ -125,7 +125,7 @@ export default function CurrentFinnYear({ VendorWiseData }: any) {
         <div className="p-4">
           <CurrentFinYearTable VendorWiseData={VendorWiseData} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

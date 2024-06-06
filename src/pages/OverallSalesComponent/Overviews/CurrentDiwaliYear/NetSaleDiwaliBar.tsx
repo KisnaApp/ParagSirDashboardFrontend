@@ -27,6 +27,14 @@ export default function NetSaleDiwaliBar({ VendorWiseData }: any) {
     maintainAspectRatio: false,
     aspectRatio: 1,
     responsive: true,
+    layout: {
+      padding: {
+        // left: 20, // left margin
+        // right: 20, // right margin
+        top: 20, // top margin
+        // bottom: 20, // bottom margin
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -36,6 +44,7 @@ export default function NetSaleDiwaliBar({ VendorWiseData }: any) {
         text: "Chart.js Bar Chart",
       },
       datalabels: {
+        padding: -5,
         color: "black",
         align: "top",
         anchor: "end",
@@ -88,7 +97,7 @@ export default function NetSaleDiwaliBar({ VendorWiseData }: any) {
     datasets: [
       {
         label: "Net Sales",
-        data: dataT?.map((item: any) => item.sale),
+        data: dataT?.map((item: any) => item.sale.toFixed(2)),
         backgroundColor: "#0A9396",
         // barThickness: 55,
         // barPercentage: 0.1, // Adjust this value to change spacing
@@ -96,7 +105,7 @@ export default function NetSaleDiwaliBar({ VendorWiseData }: any) {
       },
       {
         label: "Return",
-        data: dataT?.map((item: any) => item.return),
+        data: dataT?.map((item: any) => item.return.toFixed(2)),
         backgroundColor: "#EE9B00",
         // barThickness: 55,
         // barPercentage: 0.1, // Adjust this value to change spacing

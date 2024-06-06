@@ -31,6 +31,14 @@ export default function NetSaleDiwaliLine({ VendorWiseData }: any) {
     maintainAspectRatio: false,
     aspectRatio: 1,
     responsive: true,
+    layout: {
+      padding: {
+        // left: 20, // left margin
+        // right: 20, // right margin
+        top: 20, // top margin
+        // bottom: 20, // bottom margin
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -40,6 +48,9 @@ export default function NetSaleDiwaliLine({ VendorWiseData }: any) {
         text: "Chart.js Bar Chart",
       },
       datalabels: {
+        display: false,
+
+        padding: -5,
         color: "black",
         align: "top",
         anchor: "end",

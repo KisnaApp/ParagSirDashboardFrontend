@@ -20,7 +20,6 @@ function createData(
 
 export default function CurrentTable({ VendorWiseData }: any) {
   const data = VendorWiseData?.netsaleSummray;
-  console.log("first", data);
   return (
     <TableContainer>
       <Table
@@ -46,15 +45,12 @@ export default function CurrentTable({ VendorWiseData }: any) {
             <TableCell align="left" style={headerStyle}>
               Gold
             </TableCell>
-
             <TableCell align="left" style={headerStyle}>
               Silver
             </TableCell>
-
             <TableCell align="left" style={headerStyle}>
               Platinum
             </TableCell>
-
             <TableCell align="left" style={headerStyleNa}>
               Rare
             </TableCell>
@@ -163,8 +159,8 @@ const cellStyleA = {
   fontSize: "16px",
   // borderRight: "1px solid #E0E0FF",
 
-  paddingBottom: "9px",
-  paddingTop: "9px", // Decreased cell height
+  paddingBottom: "12px",
+  paddingTop: "12px", // Decreased cell height
   fontFamily: "__Montserrat_b1da2a",
   fontWeight: "650",
 };

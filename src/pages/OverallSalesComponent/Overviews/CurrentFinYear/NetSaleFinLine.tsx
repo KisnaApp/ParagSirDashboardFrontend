@@ -31,6 +31,14 @@ export default function NetSaleFinLine({ VendorWiseData }: any) {
     maintainAspectRatio: false,
     aspectRatio: 1,
     responsive: true,
+    layout: {
+      padding: {
+        // left: 20, // left margin
+        // right: 20, // right margin
+        top: 20, // top margin
+        // bottom: 20, // bottom margin
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -40,6 +48,8 @@ export default function NetSaleFinLine({ VendorWiseData }: any) {
         text: "Chart.js Bar Chart",
       },
       datalabels: {
+        display: false,
+        padding: -5,
         color: "black",
         align: "top",
         anchor: "end",
@@ -85,20 +95,7 @@ export default function NetSaleFinLine({ VendorWiseData }: any) {
       },
     },
   };
-  // const labels = [
-  //   "November",
-  //   "December",
-  //   "January",
-  //   "February",
-  //   "March",
-  //   "April",
-  //   "May",
-  //   "June",
-  //   "July",
-  //   "August",
-  //   "September",
-  //   "October",
-  // ];
+
   const data = {
     labels: dataT?.map((item: any) => {
       return item.date;
@@ -106,7 +103,7 @@ export default function NetSaleFinLine({ VendorWiseData }: any) {
     datasets: [
       {
         label: "Total Pcs",
-        data: dataT?.map((item: any) => item.sale),
+        data: dataT?.map((item: any) => item.sale.toFixed(2)),
         backgroundColor: "rgba(56, 137, 104, 0.1)",
         fill: true,
         borderColor: "#388968",
@@ -116,7 +113,7 @@ export default function NetSaleFinLine({ VendorWiseData }: any) {
       },
       {
         label: "Dispatch",
-        data: dataT?.map((item: any) => item.return),
+        data: dataT?.map((item: any) => item.return.toFixed(2)),
         backgroundColor: "rgba(143, 177, 64, 0.1)",
         fill: true,
         borderColor: "#8FB140",

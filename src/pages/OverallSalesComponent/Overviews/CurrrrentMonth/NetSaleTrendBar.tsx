@@ -27,10 +27,19 @@ export default function NetSaleTrendBar({ VendorWiseData }: any) {
     }
   }, [VendorWiseData]);
   const dataT = VendorWiseData?.netSaleTrand;
+
   const options = {
     maintainAspectRatio: false,
     aspectRatio: 1,
     responsive: true,
+    layout: {
+      padding: {
+        // left: 20, // left margin
+        // right: 20, // right margin
+        top: 20, // top margin
+        // bottom: 20, // bottom margin
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -43,6 +52,7 @@ export default function NetSaleTrendBar({ VendorWiseData }: any) {
         color: "black",
         align: "top",
         anchor: "end",
+        padding: -10,
         font: {
           family: "Montserrat", // Set the desired font family
           size: 12, // Set the font size
@@ -92,7 +102,7 @@ export default function NetSaleTrendBar({ VendorWiseData }: any) {
     datasets: [
       {
         label: "Net Sales",
-        data: dataT?.map((item: any) => item.sale),
+        data: dataT?.map((item: any) => item.sale.toFixed(2)),
         backgroundColor: "#2F5EC4",
         // barThickness: 55,
         // barPercentage: 0.1, // Adjust this value to change spacing
@@ -100,7 +110,7 @@ export default function NetSaleTrendBar({ VendorWiseData }: any) {
       },
       {
         label: "Return",
-        data: dataT?.map((item: any) => item.return),
+        data: dataT?.map((item: any) => item.return.toFixed(2)),
         backgroundColor: "#45A5F5",
         // barThickness: 55,
         // barPercentage: 0.1, // Adjust this value to change spacing
@@ -118,11 +128,7 @@ export default function NetSaleTrendBar({ VendorWiseData }: any) {
           padding: "1%",
         }}
       >
-        {loading ? (
-          <p>loding...</p>
-        ) : (
-          <Bar options={options} data={data} plugins={[ChartDataLabels]} />
-        )}
+        <Bar options={options} data={data} plugins={[ChartDataLabels]} />
       </div>
     </>
   );

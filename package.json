@@ -46,6 +46,7 @@
     "react-modal": "^3.16.1",
     "react-perfect-scrollbar": "^1.5.8",
     "react-select": "^5.8.0",
+    "react-shimmer-effects": "^1.0.3",
     "react-virtuoso": "^4.7.4",
     "sharp": "^0.33.3",
     "simplebar": "^6.2.5",

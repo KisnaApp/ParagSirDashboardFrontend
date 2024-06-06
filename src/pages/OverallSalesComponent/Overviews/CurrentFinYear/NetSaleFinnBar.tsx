@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -21,12 +21,26 @@ ChartJS.register(
 );
 
 export default function NetSaleFinnBar({ VendorWiseData }: any) {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (VendorWiseData) {
+      setLoading(false);
+    }
+  }, [VendorWiseData]);
   const dataT = VendorWiseData?.netSaleTrand;
 
   const options = {
     maintainAspectRatio: false,
     aspectRatio: 1,
     responsive: true,
+    layout: {
+      padding: {
+        // left: 20, // left margin
+        // right: 20, // right margin
+        top: 20, // top margin
+        // bottom: 20, // bottom margin
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -37,6 +51,7 @@ export default function NetSaleFinnBar({ VendorWiseData }: any) {
       },
       datalabels: {
         color: "black",
+        padding: -5,
         align: "top",
         anchor: "end",
         font: {
@@ -89,7 +104,7 @@ export default function NetSaleFinnBar({ VendorWiseData }: any) {
     datasets: [
       {
         label: "Net Sales",
-        data: dataT?.map((item: any) => item.sale),
+        data: dataT?.map((item: any) => item.sale.toFixed(2)),
         backgroundColor: "#388968",
         // barThickness: 55,
         // barPercentage: 0.1, // Adjust this value to change spacing
@@ -97,7 +112,7 @@ export default function NetSaleFinnBar({ VendorWiseData }: any) {
       },
       {
         label: "Return",
-        data: dataT?.map((item: any) => item.return),
+        data: dataT?.map((item: any) => item.return.toFixed(2)),
         backgroundColor: "#8FB140",
         // barThickness: 55,
         // barPercentage: 0.1, // Adjust this value to change spacing

@@ -30,6 +30,14 @@ export default function NetSaleTrendLine({ VendorWiseData }: any) {
     maintainAspectRatio: false,
     aspectRatio: 1,
     responsive: true,
+    layout: {
+      padding: {
+        // left: 20, // left margin
+        // right: 20, // right margin
+        top: 20, // top margin
+        // bottom: 20, // bottom margin
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -39,9 +47,11 @@ export default function NetSaleTrendLine({ VendorWiseData }: any) {
         text: "Chart.js Bar Chart",
       },
       datalabels: {
+        display: false,
         color: "black",
         align: "top",
         anchor: "end",
+        padding: -5,
         font: {
           family: "Montserrat", // Set the desired font family
           size: 12, // Set the font size
@@ -90,8 +100,8 @@ export default function NetSaleTrendLine({ VendorWiseData }: any) {
     }),
     datasets: [
       {
-        label: "Total Pcs",
-        data: dataL.map((item: any) => item?.sale),
+        label: "Net Sales",
+        data: dataL?.map((item: any) => item?.sale.toFixed(2)),
         backgroundColor: "rgba(47, 94, 196, 0.1)",
         fill: true,
         borderColor: "#2F5EC4",
@@ -100,8 +110,8 @@ export default function NetSaleTrendLine({ VendorWiseData }: any) {
         categoryPercentage: 0.5,
       },
       {
-        label: "Dispatch",
-        data: dataL.map((item: any) => item?.return),
+        label: "Return",
+        data: dataL?.map((item: any) => item?.return.toFixed(2)),
         backgroundColor: "rgba(69, 165, 245, 0.1)",
         fill: true,
         borderColor: "#45A5F5",

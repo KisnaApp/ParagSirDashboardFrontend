@@ -1932,6 +1932,11 @@ class-variance-authority@^0.7.0:
   dependencies:
     clsx "2.0.0"
 
+classnames@^2.3.1:
+  version "2.5.1"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
+
 client-only@0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz"
@@ -4067,6 +4072,13 @@ react-select@^5.8.0:
     prop-types "^15.6.0"
     react-transition-group "^4.3.0"
     use-isomorphic-layout-effect "^1.1.2"
+
+react-shimmer-effects@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/react-shimmer-effects/-/react-shimmer-effects-1.0.3.tgz"
+  integrity sha512-UQw+dujUTUtpIsorHPrYlKQ1YdKUwHIOd4vReW0VOPauQ+nuRdyuwFM7Q6qL75WML3HvA8DB7rpdJGuxB9cZ5A==
+  dependencies:
+    classnames "^2.3.1"
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
