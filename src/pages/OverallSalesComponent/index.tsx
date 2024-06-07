@@ -94,12 +94,15 @@ export default function OverallSalesComponent({ VendorWise }: any) {
             {tabs.map((tab, index) => (
               <button
                 key={index}
+                disabled={loading}
                 onClick={() => handleTabClick(index)}
                 className={`${
                   activeTab === index
                     ? "bg-[#25215E] text-white font-semibold"
                     : "text-[#6E7191]"
-                } transition ease-in-out px-3 py-2 mx-3 hover:bg-[#25215E] hover:text-white rounded-[5px] whitespace-nowrap`}
+                } transition ease-in-out px-3 py-2 mx-3 hover:bg-[#25215E] hover:text-white rounded-[5px] whitespace-nowrap ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
                 {tab.title}
               </button>
@@ -109,7 +112,12 @@ export default function OverallSalesComponent({ VendorWise }: any) {
             <div className="pt-4">
               <select
                 style={{ outline: "none" }}
-                className="border border-[#CACAFA] rounded-sm mx-2 py-1.5 "
+                disabled={loading}
+                className={`${
+                  loading
+                    ? "border border-[#CACAFA] rounded-sm mx-2 py-1.5 opacity-50 cursor-not-allowed"
+                    : "border border-[#CACAFA] rounded-sm mx-2 py-1.5 "
+                }`}
                 onChange={(e) => setValueType(e.target.value)}
               >
                 <option value="withgst">With GST</option>

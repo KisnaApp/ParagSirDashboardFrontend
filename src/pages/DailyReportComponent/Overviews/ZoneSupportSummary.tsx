@@ -36,7 +36,7 @@ export default function ZoneSupportSummary({ valueType }: any) {
       </div>
       <div>
         {displayOption === "Table" && <ZoneTable valueType={valueType} />}
-        {displayOption === "BarGraph" && <ZoneGraph />}
+        {displayOption === "BarGraph" && <ZoneGraph valueType={valueType} />}
       </div>
     </div>
   );

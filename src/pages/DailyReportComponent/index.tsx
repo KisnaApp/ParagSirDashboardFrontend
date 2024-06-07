@@ -64,26 +64,30 @@ export default function OverallSalesComponent() {
             ))}
           </div>
           <div className="flex items-center align-middle gap-5">
-            <div className="pt-4">
-              <select
-                value={valueType}
-                style={{ outline: "none" }}
-                className="border border-[#CACAFA] rounded-sm mx-2 py-1.5 "
-                onChange={(e) => setValueType(e.target.value)}
-              >
-                <option value="Sale wise Top to Bottom">
-                  Sale wise Top to Bottom
-                </option>
-                {activeTab !== 2 && activeTab !== 3 && (
-                  <option value="Kisna Diamond Sale">Kisna Diamond Sale</option>
-                )}
+            {activeTab !== 3 && (
+              <div className="pt-4">
+                <select
+                  value={valueType}
+                  style={{ outline: "none" }}
+                  className="border border-[#CACAFA] rounded-sm mx-2 py-1.5 "
+                  onChange={(e) => setValueType(e.target.value)}
+                >
+                  <option value="Sale wise Top to Bottom">
+                    Sale wise Top to Bottom
+                  </option>
+                  {activeTab !== 2 && activeTab !== 3 && (
+                    <option value="Kisna Diamond Sale">
+                      Kisna Diamond Sale
+                    </option>
+                  )}
 
-                <option value="Percentage Wise Top to Bottom">
-                  % wise Top to Bottom
-                </option>
-                <option value="Gold Sale">Gold Sale</option>
-              </select>
-            </div>
+                  <option value="Percentage Wise Top to Bottom">
+                    % wise Top to Bottom
+                  </option>
+                  <option value="Gold Sale">Gold Sale</option>
+                </select>
+              </div>
+            )}
           </div>
         </div>
 

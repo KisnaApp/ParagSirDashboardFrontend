@@ -1,5 +1,4 @@
-import React from "react";
-import { Bar } from "react-chartjs-2";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,10 +7,9 @@ import {
   Title,
   Tooltip,
   Legend,
-  ChartOptions,
-  ChartData,
 } from "chart.js";
-
+import { Bar } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,9 +18,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-const SHSummaryBarGraph: React.FC = ({ valueType }: any) => {
-  const data: ChartData<"bar"> = {
+const SHSummaryBarGraph = ({ valueType }: any) => {
+  const data = {
     labels: [
       "TN-A",
       "KL",
@@ -45,59 +42,96 @@ const SHSummaryBarGraph: React.FC = ({ valueType }: any) => {
       "MUM-A",
       "DL-B",
     ],
-    datasets: [
-      {
-        label: "Diamond Target",
-        data:
-          valueType === "Kisna Diamond Sale"
-            ? [350, 280, 205, 410, 385, 520, 655, 380, 380, 340, 455, 210, 580, 620, 420, 380, 380, 340, 455, 210]
-            : valueType === "Sale wise Top to Bottom"
-            ? [380, 340, 455, 210, 580, 620, 420, 380, 380, 340, 455, 210, 450, 240, 255, 510, 380, 420, 605, 300]
-            : valueType === "Percentage Wise Top to Bottom"
-            ? [385, 520, 655, 380, 380, 340, 455, 210, 580, 620, 420, 380, 380, 340, 455, 210, 580, 620, 420, 380]
-            : [385, 520, 655, 380, 380, 340, 455, 210, 580, 620, 420, 380, 380, 240, 400, 310, 380, 440, 320, 480],
-        backgroundColor:
-          valueType === "Kisna Diamond Sale"
-            ? "#2969BA"
-            : valueType === "Sale wise Top to Bottom"
-            ? "#0A9396"
-            : valueType === "Percentage Wise Top to Bottom"
-            ? "#0E71CD"
-            : "#25705E",
-        barPercentage: 0.7,
-      },
-      {
-        label: "Total Net Sale",
-        data:
-          valueType === "Kisna Diamond Sale"
-            ? [450, 380, 255, 480, 440, 550, 700, 480, 500, 280, 366, 510, 490, 450, 625, 320, 380, 240, 405, 280]
-            : valueType === "Sale wise Top to Bottom"
-            ? [700, 480, 500, 280, 366, 510, 490, 450, 625, 320, 380, 240, 500, 280, 366, 510, 490, 450, 625, 320]
-            : valueType === "Percentage Wise Top to Bottom"
-            ? [380, 240, 405, 280, 560, 630, 440, 350, 366, 510, 490, 450, 625, 320, 380, 240, 500, 280, 366, 510]
-            : [700, 480, 500, 280, 366, 510, 490, 450, 625, 320, 380, 240, 500, 280, 366, 510, 490, 450, 625, 320],
-        backgroundColor:
-          valueType === "Kisna Diamond Sale"
-            ? "#59C39B"
-            : valueType === "Sale wise Top to Bottom"
-            ? "#EE9B00"
-            : valueType === "Percentage Wise Top to Bottom"
-            ? "#CA6702"
-            : "#BB9E03",
-        barPercentage: 0.7,
-      },
-    ],
+    datasets:
+      valueType === "Percentage Wise Top to Bottom"
+        ? [
+            {
+              label: "Diamond Target",
+              data: [
+                385, 520, 655, 380, 380, 340, 455, 210, 580, 620, 420, 380, 380,
+                340, 455, 210, 580, 620, 420, 380,
+              ],
+              backgroundColor: "#0E71CD",
+              barPercentage: 0.7,
+            },
+          ]
+        : [
+            {
+              label: "Diamond Target",
+              data:
+                valueType === "Kisna Diamond Sale"
+                  ? [
+                      350, 280, 205, 410, 385, 520, 655, 380, 380, 340, 455,
+                      210, 580, 620, 420, 380, 380, 340, 455, 210,
+                    ]
+                  : valueType === "Sale wise Top to Bottom"
+                  ? [
+                      380, 340, 455, 210, 580, 620, 420, 380, 380, 340, 455,
+                      210, 450, 240, 255, 510, 380, 420, 605, 300,
+                    ]
+                  : [
+                      385, 520, 655, 380, 380, 340, 455, 210, 580, 620, 420,
+                      380, 380, 240, 400, 310, 380, 440, 320, 480,
+                    ],
+              backgroundColor:
+                valueType === "Kisna Diamond Sale"
+                  ? "#2969BA"
+                  : valueType === "Sale wise Top to Bottom"
+                  ? "#0A9396"
+                  : "#25705E",
+              barPercentage: 0.7,
+            },
+            {
+              label: "Total Net Sale",
+              data:
+                valueType === "Kisna Diamond Sale"
+                  ? [
+                      450, 380, 255, 480, 440, 550, 700, 480, 500, 280, 366,
+                      510, 490, 450, 625, 320, 380, 240, 405, 280,
+                    ]
+                  : valueType === "Sale wise Top to Bottom"
+                  ? [
+                      700, 480, 500, 280, 366, 510, 490, 450, 625, 320, 380,
+                      240, 500, 280, 366, 510, 490, 450, 625, 320,
+                    ]
+                  : [
+                      700, 480, 500, 280, 366, 510, 490, 450, 625, 320, 380,
+                      240, 500, 280, 366, 510, 490, 450, 625, 320,
+                    ],
+              backgroundColor:
+                valueType === "Kisna Diamond Sale"
+                  ? "#59C39B"
+                  : valueType === "Sale wise Top to Bottom"
+                  ? "#EE9B00"
+                  : "#BB9E03",
+              barPercentage: 0.7,
+            },
+          ],
   };
-  const options: ChartOptions<"bar"> = {
+  const options = {
     maintainAspectRatio: false,
     responsive: true,
     plugins: {
       legend: {
+        display: false,
         position: "top" as const,
       },
-      title: {
-        display: true,
-        text: "Sales Performance",
+      datalabels: {
+        color: "black",
+        align: "top",
+        anchor: "end",
+        padding: -10,
+        font: {
+          family: "Montserrat", // Set the desired font family
+          size: 12, // Set the font size
+        },
+        labels: {
+          title: {
+            font: {
+              weight: "bold",
+            },
+          },
+        },
       },
     },
     scales: {
@@ -122,7 +156,7 @@ const SHSummaryBarGraph: React.FC = ({ valueType }: any) => {
         padding: "1%",
       }}
     >
-      <Bar data={data} options={options} />
+      <Bar data={data} options={options} plugins={[ChartDataLabels]} />
     </div>
   );
 };

@@ -25,13 +25,17 @@ export default function FYMonthWiseSaleBarGraph() {
     maintainAspectRatio: false,
     aspectRatio: 1,
     responsive: true,
+    layout: {
+      padding: {
+        // left: 20, // left margin
+        // right: 20, // right margin
+        top: 20, // top margin
+        // bottom: 20, // bottom margin
+      },
+    },
     plugins: {
       legend: {
         display: false,
-      },
-      title: {
-        display: false,
-        text: "Chart.js Bar Chart",
       },
       datalabels: {
         color: "black",
@@ -100,17 +104,15 @@ export default function FYMonthWiseSaleBarGraph() {
         label: "2022-23",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 900 })),
         backgroundColor: "#3CAEA3",
-        barThickness: 15,
         barPercentage: 0.7, // Adjust this value to change spacing
-        categoryPercentage: 0.9,
+        // categoryPercentage: 0.9,
       },
       {
         label: "2023-24",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 900 })),
         backgroundColor: "#24658D",
-        barThickness: 15,
         barPercentage: 0.7, // Adjust this value to change spacing
-        categoryPercentage: 0.9,
+        // categoryPercentage: 0.9,
       },
     ],
   };

@@ -100,17 +100,17 @@ export default function DYMonthWiseSaleBarGraph() {
         label: "Total Pcs",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 900 })),
         backgroundColor: "#0A9396",
-        barThickness: 15,
+        // barThickness: 15,
         barPercentage: 0.7, // Adjust this value to change spacing
-        categoryPercentage: 0.5,
+        // categoryPercentage: 0.5,
       },
       {
         label: "Dispatch",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 900 })),
         backgroundColor: "#CA6702",
-        barThickness: 15,
+        // barThickness: 15,
         barPercentage: 0.7, // Adjust this value to change spacing
-        categoryPercentage: 0.5,
+        // categoryPercentage: 0.5,
       },
     ],
   };

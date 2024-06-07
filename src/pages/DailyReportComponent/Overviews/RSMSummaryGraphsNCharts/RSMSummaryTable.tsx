@@ -21,7 +21,7 @@ const RSMSummaryTable = ({ valueType }: any) => {
           style={{ fontFamily: "__Montserrat_b1da2a" }}
           className="border-2 rounded-md"
         >
-          <TableHead style={{ border: "1px solid", borderColor: "#E0E0FF" }}>
+          <TableHead style={{ border: "", borderColor: "#E0E0FF" }}>
             {valueType === "Gold Sale" ? (
               <TableRow>
                 <TableCell style={{ ...headerStyleNa, width: 250 }}>
@@ -303,7 +303,7 @@ const RSMSummaryTable = ({ valueType }: any) => {
                       style={{
                         ...cellStyleA,
                         border: row.NSM ? "1px solid #E0E0FF" : "none",
-                        borderBottom: row.NSM ? "1px solid #E0E0FF" : "none",
+                        // borderBottom: row.NSM ? "1px solid #E0E0FF" : "none",
                         width: 250,
                       }}
                     >
@@ -339,24 +339,44 @@ const RSMSummaryTable = ({ valueType }: any) => {
                     >
                       {row.DiamondTarget}
                     </TableCell>
-                    <TableCell
-                      align="left"
-                      style={{ ...cellStyle, width: 150 }}
-                    >
-                      {row.TodayNetSale}
-                    </TableCell>
+
                     <TableCell
                       align="left"
                       style={{ ...cellStyle, width: 150 }}
                     >
                       {row.TotalNetSale}
                     </TableCell>
-                    <TableCell
-                      align="left"
-                      style={{ ...cellStyleN, width: 150 }}
-                    >
-                      {row.DiamondAchieve}
-                    </TableCell>
+                    {valueType === "Sale wise Top to Bottom" ? (
+                      <TableCell
+                        align="left"
+                        style={{ ...cellStyleN, width: 150 }}
+                      >
+                        {row.TodayNetSale}
+                      </TableCell>
+                    ) : (
+                      <TableCell
+                        align="left"
+                        style={{ ...cellStyle, width: 150 }}
+                      >
+                        {row.TodayNetSale}
+                      </TableCell>
+                    )}
+                    {valueType === "Sale wise Top to Bottom" ? (
+                      <TableCell
+                        align="left"
+                        style={{ ...cellStyle, width: 150 }}
+                      >
+                        {row.DiamondAchieve}
+                      </TableCell>
+                    ) : (
+                      <TableCell
+                        align="left"
+                        style={{ ...cellStyleN, width: 150 }}
+                      >
+                        {row.DiamondAchieve}
+                      </TableCell>
+                    )}
+
                     <TableCell
                       align="left"
                       style={{ ...cellStyle, width: 150 }}
@@ -435,7 +455,7 @@ const cellStyleN = {
   fontSize: "16px",
   padding: "9px",
   fontFamily: "__Montserrat_b1da2a",
-  fontWeight: "560",
+  fontWeight: "600",
   // border: "1px solid #E0E0FF",
   // borderLeft: "1px solid #E0E0FF",
 };
