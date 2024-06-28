@@ -19,16 +19,17 @@ export default async function Home({
     // return 1;
   }
   var msgErr = null;
-
   async function loginNew(user: any, password: any, loginby: any) {
     "use server";
+    console.log("in the loginNew>>>")
     var object = {
       user: user,
       password: password,
       loginby: loginby,
     };
     var msgErr = null;
-
+    console.log("object>>>", object)
+    console.log("config._api_Live>>", config._api_Live)
     try {
       const response = await fetch(config._api_Live + "userLogin", {
         method: "POST",
@@ -38,6 +39,7 @@ export default async function Home({
         },
         body: JSON.stringify(object),
       });
+      console.log("response>>>>", response)
       // console.log(first)
       // console.log("response 1", response);
       if (!response.ok) {

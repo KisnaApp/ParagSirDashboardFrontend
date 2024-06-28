@@ -25,6 +25,9 @@ export const simpleAwaitFetchTest = async function (
   if (token) {
     fetchConfig["headers"]["Authorization"] = "Bearer " + token;
   }
+  console.log("endpoint>>>>", endpoint);
+  console.log("fetchConfig>>>", fetchConfig);
+  console.log("config._api_Live>>>>", config._api_Live);
   var res = await fetch(config._api_Live + endpoint, fetchConfig);
   if (token) {
     return res;

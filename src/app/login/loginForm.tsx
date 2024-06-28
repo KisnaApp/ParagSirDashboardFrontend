@@ -21,6 +21,7 @@ export default function FormComponent({ onCall, msgErr }: any) {
   let errors = {};
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    console.log("in the onSubmit>>>>>")
     event.preventDefault();
     document.querySelector(".alert-primary").innerHTML = "";
     errors = {};
@@ -59,13 +60,18 @@ export default function FormComponent({ onCall, msgErr }: any) {
     const inputType = isEmail ? "UsrEmail" : "UsrCd";
 
     const msg = await onCall(userInput, event.target[1].value, inputType);
+    console.log("userInput>>", userInput)
+    console.log("event.target[1].value>>", event.target[1].value)
+    console.log("inputType>>>", inputType)
 
     // console.log("Show the msg", msg);
     if (msg && !msg.success) {
+      console.log("1")
       document.querySelector(".invalid-feedback").innerHTML = msg.message;
       // document.querySelector(".invalid-feedback") = "block";
       setIsLoading(false);
     } else if (msg && msg.success) {
+      console.log("2")
       alert("Login Successful!");
       router.push("/overallSales"); // Redirect to the kisna page upon successful login
     }

@@ -53,6 +53,7 @@ const overallSales = async () => {
         },
         body: JSON.stringify(requestBody),
       });
+      console.log("requestBody>>", requestBody);
 
       const data = await response.json();
       console.log(data, "overallSale");

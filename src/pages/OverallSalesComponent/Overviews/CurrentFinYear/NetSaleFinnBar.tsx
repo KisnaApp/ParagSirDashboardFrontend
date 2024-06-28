@@ -21,7 +21,14 @@ ChartJS.register(
 );
 
 export default function NetSaleFinnBar({ VendorWiseData }: any) {
+  console.log("in the CurrentFinnYear VendorWiseData>>>", VendorWiseData);
   const dataT = VendorWiseData?.netSaleTrand;
+  console.log("dataT>>>>", dataT);
+  // if(dataT){
+  //   var totData = dataT.find(index => index.type === 'Total');
+  //   console.log("totData>>>", totData)
+  // }
+  //const totaldata = dataT.find(item => item.type === 'Total');
 
   const options = {
     maintainAspectRatio: false,

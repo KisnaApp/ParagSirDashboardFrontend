@@ -10,6 +10,7 @@ import NetSaleTrendLine from "./CurrrrentMonth/NetSaleTrendLine";
 import CurrentTable from "./CurrrrentMonth/CurrentTable";
 
 export default function CurrentMonth({ VendorWiseData }: any) {
+  console.log("in the CurrentMonth VendorWiseData>>>>>", VendorWiseData);
   // const data = VendorWiseData?.netsaleSummray;
   // console.log("first", data);
   const DisplayOptions = {

@@ -3,13 +3,13 @@ import { cookies } from "next/headers";
 const DropdownUser = () => {
   async function signout() {
     "use server";
-    if (1) {
+    // if (1) {
       cookies().delete("__app_token");
       cookies().delete("__app_user_object");
       cookies().delete("__app_user_profile");
       cookies().delete("__app_user_name");
       redirect("/login");
-    }
+    //}
   }
 
   const cookieStore = cookies();
